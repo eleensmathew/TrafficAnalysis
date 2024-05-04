@@ -61,8 +61,7 @@ data = pd.DataFrame({'filename': image, 'classes': lst})
 data
 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-data_gen=ImageDataGenerator(rotation_range=0.2,zoom_range=0.2,
-                           horizontal_flip=True,rescale=1/255)
+data_gen=ImageDataGenerator(rotation_range=0.2,zoom_range=0.2,horizontal_flip=True,rescale=1/255)
 data_gen.flow_from_dataframe(data,'./archive (1)/images',x_col='filename',y_col='classes',target_size=(100,100))
 
 train_data=data_gen.flow_from_dataframe(data,'./archive (1)/images',x_col='filename',y_col='classes',target_size=(100,100))
@@ -78,8 +77,8 @@ model.add(Conv2D(64,(3,3)))
 model.add(MaxPool2D())
 model.add(Conv2D(128,(3,3)))
 model.add(MaxPool2D())
-model.add(Conv2D(128,(3,3)))
-model.add(MaxPool2D())
+# model.add(Conv2D(128,(3,3)))
+# model.add(MaxPool2D())
 model.add(Conv2D(32,(3,3)))
 model.add(MaxPool2D())
 model.add(Flatten())
@@ -101,8 +100,10 @@ def check(img_path):
     # Print the predicted class
     if pred1[0][1] > 0.5:
         print('Helmet')
+        return 'Helmet'
     else:
         print('No helmet')
+        return 'No helmet'
 
-    pred1
+    
 
