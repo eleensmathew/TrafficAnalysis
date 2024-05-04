@@ -23,9 +23,11 @@ def run_video(path):
         #prediction = model.predict(np.expand_dims(frame, axis=0))
         cv2.imwrite('current_frame.jpg', frame)
         helmet_present = check('current_frame.jpg')
-        if helmet_present:
+        if helmet_present =="Helmet":
             
             cv2.putText(frame, 'Helmet detected', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        else:
+            cv2.putText(frame, 'Helmet Not detected', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         cv2.imshow('Helmet Detection', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
