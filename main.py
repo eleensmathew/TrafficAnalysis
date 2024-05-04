@@ -16,6 +16,7 @@ def detect_all(img_path):
     overcrowding_model= YOLO("best.pt")
     helmet_model= YOLO("best_helmet.pt")
     overcrowding_results= overcrowding_model(resized_image)
+    helmet_results= helmet_model(resized_image)
     class_colors = [(0, 255, 0), (255, 0, 0), (0, 0, 255)]  # replace with your actual class colors
 
     
