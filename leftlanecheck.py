@@ -190,7 +190,7 @@ def detect_motion(frame1, frame2):
     cv2.waitKey(6000)
     cv2.destroyAllWindows()
     # If contours are detected, there is motion
-    if len(contours) > 2:
+    if len(contours) ==0:
         return True
     else:
         return False
