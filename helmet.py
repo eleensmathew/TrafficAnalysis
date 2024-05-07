@@ -1,12 +1,13 @@
 import gradio as gr
 from ultralytics import YOLO
+import cv2
 
 def detect_helmet(img_path):
     model = YOLO("best_helmet.pt")
     model.predict(source = img_path, conf=0.5, show = True, save=True, save_dir = img_path)
     #helmet_results= model(img_path)
     #print(helmet_results)
-    return img_path
+    cv2.destroyAllWindows()
 
 
 iface = gr.Interface(fn=detect_helmet, inputs='file', outputs='file')
